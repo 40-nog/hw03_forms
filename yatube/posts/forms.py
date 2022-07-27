@@ -8,6 +8,7 @@ class PostForm(forms.ModelForm):
         label='Напишите что-нибудь',
         required=True
     )
+
     class Meta:
         model = Post
         fields = ('group', 'text')
