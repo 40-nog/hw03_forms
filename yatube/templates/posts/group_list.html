@@ -4,7 +4,7 @@
 {% block header %}{{ group.title }}{% endblock %}
 
 {% block content %}
-  <h3>Группа{{ group.title }}</h3>
+  <h3>Группа {{ group.title }}</h3>
   <p>{{ group.description }}</p>
   {% for post in page_obj %}
     {% include 'includes/post_card.html' %}
