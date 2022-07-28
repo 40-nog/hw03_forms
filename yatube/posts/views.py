@@ -32,16 +32,10 @@ def group_posts(request, slug):
 
 def profile(request, username):
     user = get_object_or_404(User, username=username)
-    post_list_user = user.posts.all().filter(author__username=username)
-    paginator = Paginator(post_list_user, 10)
-    page_number = request.GET.get('page')
-    post_count = post_list_user.count()
-    page_obj = paginator.get_page(page_number)
     context = {
-        'page_obj': page_obj,
-        'post_count': post_count,
         'author': user,
     }
+    context.update(pagination(user.posts.all(), request))
     return render(request, 'posts/profile.html', context)
 
 
